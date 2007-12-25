@@ -212,7 +212,7 @@ describe Sequel::Model, "Validations" do
   it "should description" do
     Sequel::Model.should_receive(:require).with("validatable").and_raise(LoadError)
     STDERR.should_receive(:puts)
-    load File.join(File.dirname(__FILE__), "../../lib/sequel/model/validations.rb")
+    load File.join(File.dirname(__FILE__), "../lib/sequel_model/validations.rb")
   end
   
   it "should allow 'longhand' validations direcly within the model." do

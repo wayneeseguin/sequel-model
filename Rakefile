@@ -134,28 +134,6 @@ Spec::Rake::SpecTask.new("spec_no_cov") do |t|
   t.spec_opts  = File.read("spec/spec.opts").split("\n")
 end
 
-desc "Run adapter specs without coverage"
-Spec::Rake::SpecTask.new("spec_adapters") do |t|
-  t.spec_files = FileList["spec/adapters/*_spec.rb"]
-  t.spec_opts  = File.read("spec/spec.opts").split("\n")
-end
-
-desc "Run all specs with coverage"
-Spec::Rake::SpecTask.new("spec_all") do |t|
-  t.spec_files = FileList["spec/*_spec.rb", "spec/adapters/*_spec.rb"]
-  t.rcov_opts  = File.read("spec/rcov.opts").split("\n")
-  t.spec_opts  = File.read("spec/spec.opts").split("\n")
-  t.rcov = true
-end
-
-desc "Run rcov only"
-Spec::Rake::SpecTask.new("rcov") do |t|
-  t.rcov_opts  = File.read("spec/rcov.opts").split("\n")
-  t.spec_opts  = File.read("spec/spec.opts").split("\n")
-  t.spec_files = FileList["spec/*_spec.rb"]
-  t.rcov = true
-end
-
 ##############################################################################
 # Statistics
 ##############################################################################
