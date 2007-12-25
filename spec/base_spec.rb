@@ -1,3 +1,5 @@
+require File.join(File.dirname(__FILE__), "spec_helper")
+
 describe "Model attribute setters" do
 
   before(:each) do

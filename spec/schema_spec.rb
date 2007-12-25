@@ -1,3 +1,5 @@
+require File.join(File.dirname(__FILE__), "spec_helper")
+
 describe Sequel::Model, "table_exists?" do
 
   before(:each) do

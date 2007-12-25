@@ -1,3 +1,5 @@
+require File.join(File.dirname(__FILE__), "spec_helper")
+
 describe Sequel::Model, "one_to_one" do
 
   before(:each) do
