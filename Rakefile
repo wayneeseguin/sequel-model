@@ -8,8 +8,8 @@ include FileUtils
 ##############################################################################
 # Configuration
 ##############################################################################
-NAME = "sequel"
-VERS = "0.4.5"
+NAME = "sequel_model"
+VERS = "0.1"
 CLEAN.include ["**/.*.sw?", "pkg/*", ".config", "doc/*", "coverage/*"]
 RDOC_OPTS = [
   "--quiet", 
