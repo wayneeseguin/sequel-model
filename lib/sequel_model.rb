@@ -1,3 +1,4 @@
+gem 'sequel', '>= 0.5'
 require 'sequel'
 
 module Sequel

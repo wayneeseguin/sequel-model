@@ -13,7 +13,7 @@ VERS = "0.1"
 CLEAN.include ["**/.*.sw?", "pkg/*", ".config", "doc/*", "coverage/*"]
 RDOC_OPTS = [
   "--quiet", 
-  "--title", "Sequel: Concise ORM for Ruby",
+  "--title", "Sequel Model: Lightweight ORM for Ruby",
   "--opname", "index.html",
   "--line-numbers", 
   "--main", "README",
@@ -29,7 +29,7 @@ Rake::RDocTask.new do |rdoc|
   rdoc.rdoc_dir = "doc/rdoc"
   rdoc.options += RDOC_OPTS
   rdoc.main = "README"
-  rdoc.title = "Sequel: Lightweight ORM library for Ruby"
+  rdoc.title = "Sequel: Lightweight ORM for Ruby"
   rdoc.rdoc_files.add ["README", "COPYING", "lib/sequel.rb", "lib/**/*.rb"]
 end
 
@@ -49,17 +49,13 @@ spec = Gem::Specification.new do |s|
   s.extra_rdoc_files = ["README", "CHANGELOG", "COPYING"]
   s.rdoc_options += RDOC_OPTS + 
     ["--exclude", "^(examples|extras)\/", "--exclude", "lib/sequel.rb"]
-  s.summary = "Lightweight ORM library for Ruby"
+  s.summary = "Lightweight ORM for Ruby"
   s.description = s.summary
   s.author = "Sharon Rosner"
   s.email = "ciconia@gmail.com"
   s.homepage = "http://sequel.rubyforge.org"
-  s.executables = ["sequel"]
   s.required_ruby_version = ">= 1.8.4"
 
-  # Instead of requiring this, how about we simply use it if it's available
-  # by rescuing LoadError where we require it in model/validations.rb?
-  # s.add_dependency("validatable")
   case RUBY_PLATFORM
   when /mswin/
     s.platform = Gem::Platform::CURRENT
@@ -67,15 +63,14 @@ spec = Gem::Specification.new do |s|
     s.platform = "jruby"
   else
     s.platform = Gem::Platform::RUBY
-    s.add_dependency("metaid")
-    s.add_dependency("ParseTree", ">= 2.0.0")
-    s.add_dependency("ruby2ruby")
   end
+
+  s.add_dependency("sequel", '>= 0.5')
+  s.add_dependency("validatable")
   
-  s.files = %w(COPYING README Rakefile) + Dir.glob("{bin,doc,spec,lib}/**/*")
+  s.files = %w(COPYING README Rakefile) + Dir.glob("{doc,spec,lib}/**/*")
 
   s.require_path = "lib"
-  s.bindir = "bin"
 end
 
 Rake::GemPackageTask.new(spec) do |p|
