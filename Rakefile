@@ -9,7 +9,7 @@ include FileUtils
 # Configuration
 ##############################################################################
 NAME = "sequel_model"
-VERS = "0.1"
+VERS = "0.2"
 CLEAN.include ["**/.*.sw?", "pkg/*", ".config", "doc/*", "coverage/*"]
 RDOC_OPTS = [
   "--quiet", 
@@ -30,7 +30,7 @@ Rake::RDocTask.new do |rdoc|
   rdoc.options += RDOC_OPTS
   rdoc.main = "README"
   rdoc.title = "Sequel: Lightweight ORM for Ruby"
-  rdoc.rdoc_files.add ["README", "COPYING", "lib/sequel.rb", "lib/**/*.rb"]
+  rdoc.rdoc_files.add ["README", "COPYING", "lib/sequel_model.rb", "lib/**/*.rb"]
 end
 
 ##############################################################################
@@ -42,13 +42,13 @@ task :package => [:clean]
 
 spec = Gem::Specification.new do |s|
   s.name = NAME
-  s.rubyforge_project = NAME
+  s.rubyforge_project = 'sequel'
   s.version = VERS
   s.platform = Gem::Platform::RUBY
   s.has_rdoc = true
   s.extra_rdoc_files = ["README", "CHANGELOG", "COPYING"]
   s.rdoc_options += RDOC_OPTS + 
-    ["--exclude", "^(examples|extras)\/", "--exclude", "lib/sequel.rb"]
+    ["--exclude", "^(examples|extras)\/", "--exclude", "lib/sequel_model.rb"]
   s.summary = "Lightweight ORM for Ruby"
   s.description = s.summary
   s.author = "Sharon Rosner"
@@ -65,7 +65,7 @@ spec = Gem::Specification.new do |s|
     s.platform = Gem::Platform::RUBY
   end
 
-  s.add_dependency("sequel", '>= 0.5')
+  s.add_dependency("sequel_core", '>= 0.5')
   s.add_dependency("validatable")
   
   s.files = %w(COPYING README Rakefile) + Dir.glob("{doc,spec,lib}/**/*")

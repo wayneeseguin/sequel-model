@@ -1,5 +1,7 @@
-gem 'sequel', '>= 0.5'
-require 'sequel'
+unless Object.const_defined?('Sequel')
+  gem 'sequel_core', '>= 0.5'
+  require 'sequel_core'
+end
 
 module Sequel
   # == Sequel Models
@@ -287,11 +289,7 @@ module Sequel
 
     # Like delete_all, but invokes before_destroy and after_destroy hooks if used.
     def self.destroy_all
-      if has_hooks?(:before_destroy) || has_hooks?(:after_destroy)
-        dataset.destroy
-      else
-        dataset.delete
-      end
+      dataset.destroy
     end
         
     def self.is_dataset_magic_method?(m)
