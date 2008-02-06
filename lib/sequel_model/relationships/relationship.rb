@@ -14,7 +14,8 @@ module Sequel
         @klass    = klass
         @relation = relation
         @options  = options
-        setup options
+        # TODO: move the setup somewhere else:
+        #setup options
       end
 
       def setup(options = {})
