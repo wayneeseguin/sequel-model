@@ -1,4 +1,4 @@
-files = %w{ scoping relationship block join_table }
+files = %w{ scoping relationship has_one has_many block join_table }
 dir = File.join(File.dirname(__FILE__), "relationships")
 files.each {|f| require(File.join(dir, f))}
 
