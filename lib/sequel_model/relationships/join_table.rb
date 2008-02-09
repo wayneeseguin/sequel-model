@@ -72,8 +72,8 @@ module Sequel
           # TODO: Inflect!, define a method to return primary_key as an array
           instance_eval <<-JOINTABLE
           db.create_table name.to_sym do
-            #{source_class.primary_key_def.reverse.join(" :#{Inflector.singularize(source_class.table_name)}_")}, :null => false
-            #{destination_class.primary_key_def.reverse.join(" :#{Inflector.singularize(destination_class.table_name)}_")}, :null => false
+            #{source_class.primary_keys_hash.reverse.join(" :#{Inflector.singularize(source_class.table_name)}_")}, :null => false
+            #{destination_class.primary_keys_hash.reverse.join(" :#{Inflector.singularize(destination_class.table_name)}_")}, :null => false
           end
           JOINTABLE
           true
