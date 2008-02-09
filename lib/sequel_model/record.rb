@@ -49,7 +49,13 @@ module Sequel
     def self.primary_key_hash(value)
       {:id => value}
     end
-    
+
+    # returns the primary keys and their types as a hash
+    def self.primary_keys_hash
+      # TODO: make work for compound primary keys
+      {:id => "integer"}
+    end
+
     # Sets primary key, regular and composite are possible.
     #
     # == Example:
