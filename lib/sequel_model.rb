@@ -4,7 +4,6 @@ module Sequel
   end
 end
 
-# TODO: add relationships when complete:
 files = %w[
   base hooks record schema relations 
   caching plugins validations relationships
@@ -238,13 +237,16 @@ module Sequel
   #   Post.drop_table
   #   Post.create_table! # drops the table if it exists and then recreates it
   # 
+
+  
   class Model
+    
     # Returns a string representation of the model instance including
     # the class name and values.
     def inspect
       "#<%s @values=%s>" % [self.class.name, @values.inspect]
     end
-    
+
     # Defines a method that returns a filtered dataset.
     def self.subset(name, *args, &block)
       dataset.meta_def(name) {filter(*args, &block)}
